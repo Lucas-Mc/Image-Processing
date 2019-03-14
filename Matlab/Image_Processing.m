@@ -20,7 +20,7 @@ image = im2double(temp_image);
 
 %% 2. Spatial Lowpass
 for i = 1:0.1:15
-    kernel = (1/i).*[1,1,1;1,1,1;1,1,1]; % Or whatever size window you want.
+    kernel = (1/i).*[1,1,1;1,1,1;1,1,1]; 
     new_image = convn(image, kernel);
     figure(2)
     imshow(new_image)
@@ -30,7 +30,7 @@ end
 
 %% 3. Spatial Highpass
 for i = 1:0.1:15
-    kernel = [0,-1,0;-1,i,-1;0,-1,0]; % Or whatever size window you want.
+    kernel = [0,-1,0;-1,i,-1;0,-1,0]; 
     new_image = convn(image, kernel);
     figure(3)
     imshow(new_image)
