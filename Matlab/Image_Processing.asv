@@ -19,26 +19,18 @@ figure(1)
 imshow(temp_image)
 image = im2double(temp_image);
 
-% Convert all the white pixels to black
 file_name = 'Test_Image.jpg';
 temp_image = imread(file_name);
+figure(1)
+imshow(temp_image)
 image = im2double(temp_image);
 
 for i = 1:1200
-    for j = 1:1200
-        if ((image(i,j,1)==1)&&(image(i,j,2)==1)&&(image(i,j,3)==1))
-            image(i,j,1) = 0;
-            image(i,j,2) = 0;
-            image(i,j,3) = 0;
-        end
-    end
+    
 end
 
-figure(2)
-imshow(image)
-
 %% 2. Spatial Lowpass
-h = figure(3);
+h = figure(2);
 out_file = 'Lowpass.gif';
 for i = 1:0.1:15
     kernel = (1/i).*[1,1,1;1,1,1;1,1,1]; 
@@ -60,7 +52,7 @@ for i = 1:0.1:15
 end
 
 %% 3. Spatial Highpass
-h = figure(4);
+h = figure(3);
 out_file = 'Highpass.gif';
 for i = 1:0.1:15
     kernel = [0,-1,0;-1,i,-1;0,-1,0]; 
@@ -82,7 +74,7 @@ for i = 1:0.1:15
 end
 
 %% 4. Fourier Representation
-h = figure(5);
+h = figure(4);
 out_file = 'Fourier_Rep.png';
 F = fft2(image,512,512);
 F2 = fftshift(F);
@@ -97,11 +89,11 @@ saveas(h,out_file);
 %% 6. Fourier Highpass
 
 %% 7. Gabor Filter
-%sigma = ;
-%theta = ;
-%lambda = ;
-%psi = ;
-%gamma = ;
+sigma = ;
+theta = ;
+lambda = ;
+psi = ;
+gamma = ;
 
 sigma_x = sigma;
 sigma_y = sigma/gamma;
